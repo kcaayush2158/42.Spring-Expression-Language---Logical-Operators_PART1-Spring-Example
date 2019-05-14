@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+    <bean id="subject" class="com.application.model.Subject">
+        <property name="studentName" value="aayushkc"/>
+        <property name="marksInEconomics" value="20"/>
+        <property name="marksInMath" value="27"/>
+        <property name="marksInScience" value="23"/>
+    </bean>
+<!--
+
+    <bean id="subject2" class="com.application.model.Subject">
+        <property name="studentName" value="sean murphy"/>
+        <property name="marksInEconomics" value="56"/>
+        <property name="marksInMath" value="78"/>
+        <property name="marksInScience" value="98"/>
+    </bean>
+-->
+
+
+
+    <bean id="examinationresult" class="com.application.model.ExamResult">
+        <property name="hasPassed" value="#{subject.marksInEconomics>=40 and subject.marksInMath>=40 and subject.marksInScience>40}"/>
+        <property name="resultMessage" value="#{subject.marksInEconomics>=40 and subject.marksInMath>=40 and subject.marksInScience>40 ? passedMessage :failedMessage}"/>
+    </bean>
+
+
+    <bean id="passedMessage" class="java.lang.String">
+        <constructor-arg>
+            <value>You have been passed</value>
+        </constructor-arg>
+    </bean>
+
+    <bean id="failedMessage" class="java.lang.String">
+        <constructor-arg>
+            <value>You have been failed</value>
+        </constructor-arg>
+    </bean>
+</beans>
